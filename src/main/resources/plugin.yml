@@ -1,0 +1,8 @@
+name: PlayerJoinTimeWriter
+version: '${version}'
+main: cn.qfys521.playerjointimewriter.PlayerJoinTimeWriter
+prefix: PPJTW
+load: STARTUP
+authors: [ qfys521 ]
+description: Player Join Time Writer
+website: https://blog.qfys521.cn/
