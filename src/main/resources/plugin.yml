@@ -1,8 +1,24 @@
 name: PlayerJoinTimeWriter
 version: '${version}'
 main: cn.qfys521.playerjointimewriter.PlayerJoinTimeWriter
-prefix: PPJTW
+prefix: getPlayerLastJoinTime
 load: STARTUP
 authors: [ qfys521 ]
-description: Player Join Time Writer
+description: Player Last Join Time Writer
 website: https://blog.qfys521.cn/
+
+commands:
+  getPlayerLastJoinTime:
+    description: 获取玩家最后一次加入的时间
+    usage: /<command> <player>
+    permission: getPlayerJoinTime.getter
+    permission-message: You don't have <permission>
+
+permissions:
+  getPlayerJoinTime.*:
+    description: Gives access to all doorman commands //给予使用doorman所有命令的权限
+    children:
+      getPlayerJoinTime.get: true
+  getPlayerJoinTime.get:
+    description: 获取玩家最后一次加入的时间
+    default: op

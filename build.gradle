@@ -1,4 +1,5 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
 }
 
@@ -6,7 +7,11 @@ group = 'cn.qfys521'
 version = '1.0-SNAPSHOT'
 
 repositories {
+    // mavenCentral
     mavenCentral()
+
+    // google
+    google()
     maven {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
@@ -18,10 +23,11 @@ repositories {
 }
 
 dependencies {
-compileOnly "com.destroystokyo.paper:paper-api:1.12-R0.1-SNAPSHOT"
+    compileOnly "com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT"
+    implementation files("libs/QfToolKit-1.1-SNAPSHOT-AllDependencies.jar")
 }
 
-def targetJavaVersion = 8
+def targetJavaVersion = 11
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -44,4 +50,17 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+shadowJar {
+    manifest {
+        attributes(
+                'Main-Class': 'cn.qfys521.playerjointimewriter.PlayerJoinTimeWriter'
+        )
+    }
+    minimize()
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.DSA"
+    exclude "META-INF/*.RSA"
+    exclude "META-INF/LICENSE"
 }
