@@ -4,5 +4,5 @@
 用于核对从来没有加入过世界的玩家   
 
 
-author qfys521   
+author qfys521/Reasonable-CN    
 服务器 葱葱世界V3 定制插件
